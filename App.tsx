@@ -3,11 +3,14 @@ import { StyleSheet, Text, View, Image,FlatList } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator, useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
+
 import VideoItem from './src/VideoItem';
 import { data, windowHeight } from './src/constants';
 import Search from './src/Search';
 import Message from './src/Inbox';
 import UserItem from './src/User';
+import Videonew from './src/newVideo';
+// import Messager from './src/meesager';
 const Bottomtab = createBottomTabNavigator();
 const HomeScreen = () => {
   const [activeVideoIndex,setActiveVideoIndex] = useState(0);
@@ -32,20 +35,21 @@ const Discover =()=>{
   return <Search />;
 }
 const NewVideo =()=>{
-  return null;
+  return <Videonew />;
 }
 const Inbox =()=>{
-  return <Message />;
+  return <Message  data ={data[0]}/>;
 }
 const Profile =()=>{
-  return <UserItem />;
+  return <UserItem data ={data[0]} />;
 }
 
 export default function App() {
   return (
 
     <NavigationContainer>
-
+      
+      
       <Bottomtab.Navigator
         screenOptions={{
           tabBarStyle: { backgroundColor: 'black' },
@@ -87,8 +91,8 @@ export default function App() {
               <Image
                 source={require('./new-video.png')}
                 style={[
-                  styles.newVideoButtom
-                  // focused && styles.bottomTabIconFocused,
+                  styles.newVideoButtom,
+                  focused && styles.newVideoButtom1,
                 ]}
               />
             )
@@ -134,6 +138,10 @@ const styles = StyleSheet.create({
   },
   bottomTabIconFocused: {
     tintColor: 'white'
+  },
+  newVideoButtom1: {
+    width: 48,
+    height: 35,
   },
   newVideoButtom: {
     width: 48,

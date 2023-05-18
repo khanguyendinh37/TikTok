@@ -1,24 +1,35 @@
-import { View, Text,TextInput,StyleSheet,Button ,Image} from 'react-native'
+import { View, Text,TextInput,StyleSheet,Button ,Image, TouchableOpacity, ScrollView} from 'react-native'
 import React from 'react'
 
 export default function Search() {
   return (
     <View style = {styles.contianer}>
       <View style = {styles.inputSearch}>
-      <View style = {styles.searchItem}>
-        <TextInput 
-        style={styles.textInput}
-        placeholder="Search .."
-        onChangeText={newText => setText(newText)}
+        <View style = {styles.searchItem}>
+          <TextInput 
+          style={styles.textInput}
+          placeholder="Search .."
+          onChangeText={newText => setText(newText)}
+          
+          />
+        </View>
         
-        />
+      <View style = {styles.Button}>
+      <TouchableOpacity>
+          <Image 
+          source={require('./search-bar.png')}
+          style = {styles.buttonIcon}
+          />
+        </TouchableOpacity>
       </View>
-     <View style = {styles.Button}>
-      <Image 
-      source={require('./search-bar.png')}
-      style = {styles.buttonIcon}
-      />
-     </View>
+      </View>
+      <View style={styles.ShowSeach}>
+        <ScrollView>
+          <View style = {styles.TextItem}>
+            <Text style = {styles.Text}>Nội dung tìm kiếm!</Text>
+          </View>
+         
+        </ScrollView>
       </View>
       
       
@@ -33,29 +44,51 @@ const styles = StyleSheet.create({
     width :'100%',
     flexDirection:'row',
     height:80,
+    
+   
   },
   searchItem:{
-    borderStyle:'solid', 
-   
-    borderRadius:10,
+
+    justifyContent:'center'
   },
   textInput :{
-    width :300,
+
+    height:50,
+    width :320,
     fontWeight:'bold',
-    padding:20,
-    paddingVertical:20,
+    paddingLeft:15,  
+  
+    backgroundColor:'#ececec',
+    marginLeft:8,
+    borderRadius:20,
+    
 
   },
   Button:{
     justifyContent:'center',
     alignItems:'center',
-    width :'20%',
+    width :'15%',
+    
   },
   buttonIcon:{
     
     width:30,
     height:30,
     
+  },
+  ShowSeach:{
+    marginTop:10,
+    padding:10,
+    height:600,
+  },
+  TextItem:{
+    padding:5,
+   
+  },
+  Text:{
+    fontWeight:'bold',
+    color:'black'
   }
+
 
 });

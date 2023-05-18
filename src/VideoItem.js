@@ -1,12 +1,11 @@
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import React, { useCallback } from 'react';
 import { useRef,useEffect } from 'react';
-import { View, Text, StyleSheet, Image, Animated, StatusBar } from 'react-native';
+import { View, Text, StyleSheet, Image, Animated, StatusBar, TouchableOpacity } from 'react-native';
 import Video from 'react-native-video';
 import  Easing from 'react-native/Libraries/Animated/Easing';
 import { windowHeight, windowWidth } from './constants';
 import { getMusicNoteAnimation } from './Util';
-
 
 
 export default function VideoItem({ data,isAtive }) {
@@ -99,6 +98,7 @@ export default function VideoItem({ data,isAtive }) {
                     </View>
                 </View>
                 <View style= {styles.bottomeRightSection}>
+                   
                    <Animated.Image
                         source={require('./floating-music-note.png')}
                         // style = {styles.floatingMusicNote}
@@ -116,38 +116,51 @@ export default function VideoItem({ data,isAtive }) {
                 </View>
              </View>
              <View style={styles.verticalBar}>
-                <View style={[styles.verticalBarItem, styles.avatarContainer]}>
-                    <Image 
-                    source={{uri:avatarUri}}
-                    style = {styles.avatar}
-                    />
-                    <View style={styles.followButton}>
-                        <Image style= {styles.followIcon}
-                        source = {require('./plus-button.png')}
+               <TouchableOpacity >
+                <View style={[styles.verticalBarItem, styles.avatarContainer]} >
+                        <Image 
+                        source={{uri:avatarUri}}
+                        style = {styles.avatar}
                         />
+                        <View style={styles.followButton}>
+                            <Image style= {styles.followIcon}
+                            source = {require('./plus-button.png')}
+                            
+                            />
+                        </View>
                     </View>
-                </View>
-                <View style={styles.verticalBarItem}>
-                    <Image 
-                    source={require('./heart.png')}
-                    style = {styles.verticalBarIcon}
-                    />
-                    <Text style = {styles.verticalBarText}>{likes}</Text>
-                </View>
-                <View style={styles.verticalBarItem}>
-                    <Image 
-                    source={require('./message-circle.png')}
-                    style = {styles.verticalBarIcon}
-                    />
-                    <Text style = {styles.verticalBarText}>{comments}</Text>
-                </View>
-                <View style={styles.verticalBarItem}>
-                    <Image 
-                    source={require('./reply.png')}
-                    style = {styles.verticalBarIcon}
-                    />
-                    <Text style = {styles.verticalBarText}>Share</Text>
-                </View>
+               </TouchableOpacity>
+                
+                <TouchableOpacity>
+                    <View style={styles.verticalBarItem}>
+                        <Image 
+                        source={require('./heart.png')}
+                        style = {styles.verticalBarIcon}
+                        />
+                        <Text style = {styles.verticalBarText}>{likes}</Text>
+                    </View>
+                </TouchableOpacity>
+                
+                <TouchableOpacity>
+                    <View style={styles.verticalBarItem}>
+                        <Image 
+                        source={require('./message-circle.png')}
+                        style = {styles.verticalBarIcon}
+                        />
+                        <Text style = {styles.verticalBarText}>{comments}</Text>
+                    </View>
+                </TouchableOpacity>
+               
+                <TouchableOpacity>
+                    <View style={styles.verticalBarItem}>
+                        <Image 
+                        source={require('./reply.png')}
+                        style = {styles.verticalBarIcon}
+                        />
+                        <Text style = {styles.verticalBarText}>Share</Text>
+                    </View>
+                </TouchableOpacity>
+                
 
              </View>
              
